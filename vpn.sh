@@ -19,7 +19,7 @@ start() {
 stop() {
   if [ ! -f "$PID_FILE" ]; then
     echo "PID file not found. OpenVPN may not be running."
-    exit 1
+    return
   fi
 
   PID=$(cat "$PID_FILE")
@@ -45,6 +45,13 @@ status() {
   fi
 }
 
+restart() {
+  echo "Restarting OpenVPN..."
+  stop
+  sleep 1
+  start
+}
+
 case "$1" in
   start)
     start
@@ -55,8 +62,11 @@ case "$1" in
   status)
     status
     ;;
+  restart)
+    restart
+    ;;
   *)
-    echo "Usage: $0 {start|stop|status}"
+    echo "Usage: $0 {start|stop|status|restart}"
     exit 1
     ;;
 esac

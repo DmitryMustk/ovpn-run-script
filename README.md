@@ -7,7 +7,7 @@ A minimal Bash script to manage an OpenVPN connection in the background using a 
 - Start OpenVPN in the background (`--daemon`)
 - Track process via PID file
 - Prevent duplicate launches
-- Simple CLI: `start`, `stop`, `status`
+- Simple CLI: `start`, `stop`, `restart`, `status`
 
 ## Setup
 
